@@ -274,7 +274,7 @@ export default function CameraPage({ setResult }) {
               )}
             </div>
             <p style={{ textAlign:'center', fontSize:12, color:'var(--text-muted)', marginBottom:20 }}>
-              Align the nutrition label inside the frame
+              If the text appears blurry, please upload a photo from your gallery instead.
             </p>
             <button className="btn btn-primary" onClick={capturePhoto} disabled={!camReady} style={{ marginBottom:12 }}>
               📸 Capture

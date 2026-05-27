@@ -112,7 +112,7 @@ export default function CameraPage({ setResult }) {
     setError('')
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 960 } }
+        video: { facingMode: 'environment', width: { ideal: 3840 }, height: { ideal: 2160 } }
       })
       streamRef.current = stream
       if (videoRef.current) {

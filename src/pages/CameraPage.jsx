@@ -208,7 +208,7 @@ export default function CameraPage({ setResult }) {
 
       // 4. Extract food type using official Korean food type list
       let foodType = null
-      const typeMatch = fullText.match(/식품유형[:\\s]*([^\\n\\r]+)/)
+      const typeMatch = fullText.match(/식품유형[\s:：|]*([^\s\n\r|]+)/)
       if (typeMatch) {
         const rawType = typeMatch[1].trim()
         const matched = FOOD_TYPES

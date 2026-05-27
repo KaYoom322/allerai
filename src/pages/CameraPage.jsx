@@ -349,12 +349,22 @@ async function fetchHACCPAlternatives(foodType, userAllergens) {
     const items = rawItems.map(i => i.item || i)
 
     // Filter out products that contain any of user's allergens
+    // Check both allergy field AND rawmtrl (ingredients) for better accuracy
     return items
       .filter(item => {
-        const allergy = (item.allergy || '').toLowerCase()
+        const allergy  = (item.allergy  || '').toLowerCase()
+        const rawmtrl  = (item.rawmtrl  || '').toLowerCase()
+        const combined = allergy + ' ' + rawmtrl
+
+        // Exclude products with unknown allergy info — too risky to recommend
+        if (allergy === '알수없음' || allergy === '') return false
+
+        // Exclude if any user allergen keyword found in combined text
         return !userAllergens.some(a => {
           const kr = allergenKR[a] || ''
-          return allergy.includes(kr.toLowerCase()) || allergy.includes(a.toLowerCase())
+          const krVariants = [kr, kr + '함유', kr + ' 함유']
+          return krVariants.some(v => combined.includes(v.toLowerCase()))
+              || combined.includes(a.toLowerCase())
         })
       })
       .slice(0, 3)

@@ -362,7 +362,7 @@ async function fetchHACCPAlternatives(foodType, userAllergens) {
         // Exclude if any user allergen keyword found in combined text
         return !userAllergens.some(a => {
           const kr = allergenKR[a] || ''
-          const krVariants = [kr, kr + '함유', kr + ' 함유']
+          const krVariants = [kr, kr + '함유', kr + ' 함유', kr + '포함', kr + ' 포함', kr + '성분']
           return krVariants.some(v => combined.includes(v.toLowerCase()))
               || combined.includes(a.toLowerCase())
         })

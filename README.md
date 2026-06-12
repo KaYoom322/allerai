@@ -8,4 +8,4 @@
 - 한국의 가공식품을 촬영하면, 알레르기 유발 성분이 있는지 확인하여 사용자에게 알려드립니다. 
 - HACCP DB에서 대체 식품을 찾아서 추천해드립니다.
 
-[AllerAI 바로가기](vercel.A)
+[AllerAI 바로가기](allerai.vercel.app)
